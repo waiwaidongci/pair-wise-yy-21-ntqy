@@ -28,8 +28,22 @@ CREATE TABLE IF NOT EXISTS repair_ticket (
   dispatcher_id TEXT,
   priority TEXT,
   status TEXT,
+  created_at TEXT,
   assigned_at TEXT,
   restored_at TEXT
+);
+
+CREATE TABLE IF NOT EXISTS dispatch_urge (
+  id INTEGER PRIMARY KEY,
+  ticket_id INTEGER,
+  status TEXT,
+  escalated_priority TEXT,
+  timeout_minutes INTEGER,
+  created_at TEXT,
+  last_scan_at TEXT,
+  scan_count INTEGER,
+  closed_at TEXT,
+  close_reason TEXT
 );
 
 CREATE TABLE IF NOT EXISTS crew (

@@ -5,6 +5,7 @@ export interface RepairTicket {
   dispatcher_id: number;
   priority: string;
   status: string;
+  created_at: string;
   assigned_at: string;
   restored_at: string;
 }

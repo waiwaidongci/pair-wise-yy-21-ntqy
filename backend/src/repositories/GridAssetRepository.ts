@@ -1,1 +1,1 @@
-import { seed } from "../seed"; export const gridAssetRepository = { findAll: () => seed.gridAsset, save: (row: unknown) => row };
+import { buildSeed } from "../seed"; const staticRows = buildSeed().gridAsset; export const gridAssetRepository = { findAll: () => staticRows, save: (row: unknown) => row };

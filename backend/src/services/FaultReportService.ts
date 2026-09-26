@@ -1,1 +1,1 @@
-import { faultReportRepository } from "../repositories/FaultReportRepository"; export const faultReportService = { list: () => faultReportRepository.findAll(), create: (row: unknown) => faultReportRepository.save(row) };
+import { faultReportRepository } from "../repositories/FaultReportRepository"; export const faultReportService = { list: () => faultReportRepository.findAll(), create: (row: object) => faultReportRepository.save(row) };

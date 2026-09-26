@@ -1,1 +1,1 @@
-import { seed } from "../seed"; export const sparePartUsageRepository = { findAll: () => seed.sparePartUsage, save: (row: unknown) => row };
+import { buildSeed } from "../seed"; const staticRows = buildSeed().sparePartUsage; export const sparePartUsageRepository = { findAll: () => staticRows, save: (row: unknown) => row };
