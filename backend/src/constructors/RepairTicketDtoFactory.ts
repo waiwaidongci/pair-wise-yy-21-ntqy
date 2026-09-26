@@ -1,1 +1,16 @@
-export const createRepairTicketDto = (overrides = {}) => ({ id: 1, fault_report_id: 1, team_id: 1, dispatcher_id: 1, priority: "priority 1", status: "ASSIGNED", assigned_at: "2026-06-11T09:00:00Z", restored_at: "2026-06-11T09:00:00Z", ...overrides });
+import type { RepairTicket } from "../models/RepairTicket";
+
+/** 新工单默认结构（页面 / service 不得散写默认字段） */
+export const createRepairTicketDto = (overrides: Partial<RepairTicket> = {}): Omit<RepairTicket, "id"> => ({
+  fault_report_id: 0,
+  team_id: null,
+  dispatcher_id: null,
+  priority: "MEDIUM",
+  status: "WAIT_DISPATCH",
+  reported_at: new Date().toISOString(),
+  assigned_at: null,
+  arrived_at: null,
+  restored_at: null,
+  escalated_at: null,
+  ...overrides
+});

@@ -18,7 +18,8 @@ CREATE TABLE IF NOT EXISTS fault_report (
   address_desc TEXT,
   severity TEXT,
   report_channel TEXT,
-  status TEXT
+  status TEXT,
+  reported_at TEXT
 );
 
 CREATE TABLE IF NOT EXISTS repair_ticket (
@@ -28,8 +29,11 @@ CREATE TABLE IF NOT EXISTS repair_ticket (
   dispatcher_id TEXT,
   priority TEXT,
   status TEXT,
+  reported_at TEXT,
   assigned_at TEXT,
-  restored_at TEXT
+  arrived_at TEXT,
+  restored_at TEXT,
+  escalated_at TEXT
 );
 
 CREATE TABLE IF NOT EXISTS crew (
@@ -51,6 +55,20 @@ CREATE TABLE IF NOT EXISTS spare_part_usage (
   warehouse_name TEXT,
   approved_by TEXT,
   usage_status TEXT
+);
+
+-- 超时催办待办：重复扫描只保留一条 OPEN，解除后再次超时重新生成
+CREATE TABLE IF NOT EXISTS urge_todo (
+  id INTEGER PRIMARY KEY,
+  ticket_id TEXT,
+  fault_report_id TEXT,
+  severity TEXT,
+  status TEXT,
+  overdue_minutes TEXT,
+  reason TEXT,
+  created_at TEXT,
+  closed_at TEXT,
+  close_reason TEXT
 );
 
 CREATE TABLE IF NOT EXISTS audit_log (

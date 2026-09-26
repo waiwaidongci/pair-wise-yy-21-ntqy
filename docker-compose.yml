@@ -33,6 +33,11 @@ services:
       DB_USER: ${DB_USER:-app_user}
       DB_PASSWORD: ${DB_PASSWORD:-app_password}
       JWT_SECRET: local-dev-secret
+      URGE_TIMEOUT_MINUTES: ${URGE_TIMEOUT_MINUTES:-15}
+      SCAN_INTERVAL_MS: ${SCAN_INTERVAL_MS:-30000}
+      DATA_FILE: ${DATA_FILE:-/app/data/grid-repair.json}
+    volumes:
+      - backend_data:/app/data
     ports:
       - "${BACKEND_PORT:-21104}:3000"
     depends_on:
@@ -57,3 +62,4 @@ services:
         condition: service_healthy
 volumes:
   db_data:
+  backend_data:

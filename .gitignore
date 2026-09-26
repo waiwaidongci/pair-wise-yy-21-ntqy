@@ -11,3 +11,7 @@ __pycache__/
 .pytest_cache/
 target/
 vendor/
+
+# 本地文件持久化数据
+backend/data/
+*.tmp
